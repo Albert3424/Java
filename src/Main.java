@@ -2,17 +2,16 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Animal[] animal =
-        {
-                new Animal("animal"),
-                new Cat("cat"),
-                new Dog("dog")
-        };
+        Notification[] notification =
+                {
+                      new EmailNotification("Peter", "peter@gmail.com"),
+                      new EmailNotification("Michael", "michael@outlook.com")
+                };
 
-        for (Animal animal1 : animal)
+        for(Notification notification1: notification)
         {
-            animal1.info();
-            animal1.sound();
+            notification1.printInfo();
+            notification1.send();
         }
     }
 }
