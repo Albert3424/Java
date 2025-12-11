@@ -2,16 +2,12 @@ public class Main
 {
     public static void main(String[] args)
     {
-        Notification[] notification =
-                {
-                      new EmailNotification("Peter", "peter@gmail.com"),
-                      new EmailNotification("Michael", "michael@outlook.com")
-                };
+        Validator email = new EmailValidator();
+        Validator password = new PasswordValidator();
 
-        for(Notification notification1: notification)
-        {
-            notification1.printInfo();
-            notification1.send();
-        }
+        System.out.println(email.isValid("q@gmail.com"));
+        System.out.println(email.isValid("@gmail"));
+        System.out.println(password.isValid("12345678"));
+        System.out.println(password.isValid("123"));
     }
 }
