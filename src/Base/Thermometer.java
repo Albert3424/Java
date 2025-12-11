@@ -1,3 +1,5 @@
+package Base;
+
 public class Thermometer
 {
     private double temperature;

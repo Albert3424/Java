@@ -1,3 +1,5 @@
+package Playable;
+
 public class MusicPlayer implements Playable
 {
     @Override

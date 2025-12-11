@@ -1,3 +1,5 @@
+package Base;
+
 public class Product
 {
     private String name;

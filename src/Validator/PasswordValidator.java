@@ -1,3 +1,5 @@
+package Validator;
+
 public class PasswordValidator implements Validator
 {
     @Override

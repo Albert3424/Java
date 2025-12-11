@@ -1,3 +1,5 @@
+package Validator;
+
 public class EmailValidator implements Validator
 {
     @Override

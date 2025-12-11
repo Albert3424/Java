@@ -1,3 +1,5 @@
+package Playable;
+
 public class VideoPlayer implements Playable
 {
     @Override

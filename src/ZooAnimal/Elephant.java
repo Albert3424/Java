@@ -1,3 +1,5 @@
+package ZooAnimal;
+
 public class Elephant extends ZooAnimal
 {
     public Elephant(String name)

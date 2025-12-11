@@ -1,3 +1,5 @@
+package Transport;
+
 public class Boat extends Transport
 {
     public Boat(String model)

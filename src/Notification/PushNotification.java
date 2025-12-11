@@ -1,3 +1,5 @@
+package Notification;
+
 public class PushNotification extends Notification
 {
     int deviceID;
