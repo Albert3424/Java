@@ -1,29 +1,21 @@
-import java.util.*;
-import java.util.stream.Collectors;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
+import java.util.List;
 
 public class Main
 {
-    record User(String name, int age) {}
-
-    public static void main(String[] args)
+    public static void main(String[] args) throws IOException
     {
-        List<User> users = List.of(
-                new User("Bob", 17),
-                new User("Mila", 22),
-                new User("Ilya", 31),
-                new User("Anna", 17)
-        );
-
-        Map<Integer, List<User>> grouped = users.stream().collect(Collectors.groupingBy(User::age));
-
-        grouped.entrySet().stream().max(Comparator.comparingInt(entry -> entry.getValue().size())).ifPresent(entry -> {
-                    int age = entry.getKey();
-                    String names = entry.getValue().stream()
-                            .map(User::name)
-                            .collect(Collectors.joining(", "));
-
-                    System.out.println("Возрастная группа: " + age);
-                    System.out.println("Люди в группе: " + names);
-                });
+        Path path = Paths.get("report.txt");
+        List<String> list = Arrays.asList("Строка 1 записана в файл.");
+        try {
+            Files.write(path, list,  StandardOpenOption.CREATE_NEW);
+        } catch (IOException e) {
+            System.out.println("report.txt уже существует");
+        }
     }
 }
