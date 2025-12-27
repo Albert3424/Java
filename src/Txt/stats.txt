@@ -1,0 +1,2 @@
+Total bytes: 16
+Zero bytes: 0

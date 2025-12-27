@@ -1,21 +1,34 @@
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardOpenOption;
-import java.util.Arrays;
-import java.util.List;
+import java.io.*;
 
 public class Main
 {
     public static void main(String[] args) throws IOException
     {
-        Path path = Paths.get("report.txt");
-        List<String> list = Arrays.asList("Строка 1 записана в файл.");
-        try {
-            Files.write(path, list,  StandardOpenOption.CREATE_NEW);
+
+        long totalBytes = 0;
+        long zeroBytes = 0;
+
+        try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream("data.bin"))) {
+
+            int currentByte;
+            while ((currentByte = bis.read()) != -1) {
+                totalBytes++;
+                if (currentByte == 0) {
+                    zeroBytes++;
+                }
+            }
         } catch (IOException e) {
-            System.out.println("report.txt уже существует");
+            System.out.println(e.getMessage());
+            return;
+        }
+
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("stats.txt"))) {
+
+            writer.write("Total bytes: " + totalBytes);
+            writer.newLine();
+            writer.write("Zero bytes: " + zeroBytes);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
         }
     }
 }
