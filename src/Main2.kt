@@ -1,29 +1,35 @@
-fun main()
-{
-    val logs = """
-        INFO user1 login
-        ERROR user2 failed
-        INFO user1 logout
-        INFO user3 login
-        ERROR user2 timeout
-        INFO user1 login
-    """.trimIndent()
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.delay
 
-    val result = processLogs(logs)
-    println(result)
-}
+fun main() = runBlocking {
+    launch {
+        /* 1 */
 
-
-fun processLogs(logs: String): Map<String, Int>
-{
-    val counts = mutableMapOf<String, Int>()
-
-    logs.splitToSequence("\n")
-        .filter { it.isNotBlank() && !it.startsWith("ERROR") }
-        .forEach { line ->
-            val user = line.split(" ")[1]
-            counts[user] = (counts[user] ?: 0) + 1
+        repeat(5)
+        {
+            println("Корутин")
+            delay(100)
         }
+    }
 
-    return counts.toMap()
+    repeat(5)
+    {
+        println("Main")
+        delay(100)
+    }
+
+        /* 2 */
+
+    val deferred = async {
+        println("Начало")
+        delay(1000)
+        10
+    }
+
+    println("Корутина запущена")
+
+    val result = deferredResult.await()
+    println(result)
 }

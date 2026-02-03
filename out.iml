@@ -4,5 +4,6 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$/out" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jetbrains.kotlinx.coroutines.core.jvm" level="project" />
   </component>
 </module>
